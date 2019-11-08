@@ -4,9 +4,6 @@ const {
 
 module.exports = {
   theme: {
-    fontFamily: {
-      body: ["Roboto", "Times New Roman"]
-    },
     colors: colors,
     extend: {
       colors: {
