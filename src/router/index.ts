@@ -1,8 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import Deployments from "../views/Deployments.vue";
-import Namespaces from "../views/Namespaces.vue";
+import Deployments from "@/views/Deployments.vue";
+import Namespaces from "@/views/Namespaces.vue";
 
 Vue.use(VueRouter);
 
@@ -11,6 +11,12 @@ const routes = [
     path: "/",
     name: "home",
     component: Home
+  },
+  {
+    path: "/namespace/:namespace",
+    name: "namespace",
+    component: Namespaces,
+    props: true
   },
   {
     path: "/namespaces",

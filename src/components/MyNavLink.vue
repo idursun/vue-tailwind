@@ -1,7 +1,6 @@
 <template>
   <router-link class="p-2 hover:bg-blue-700 hover:text-white hover:shadow" :to="to">
     <i :class="classObject"></i>
-    {{prefix}}
     <slot></slot>
   </router-link>
 </template>

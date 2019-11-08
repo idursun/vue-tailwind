@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Navbar />
+    <ActionBar />
     <div class="p-4">
       <router-view />
     </div>
@@ -10,9 +11,10 @@
 <script lang="ts">
 import Vue from "vue";
 import Navbar from "@/components/Navbar.vue";
+import ActionBar from "@/components/ActionBar.vue";
 
 export default {
-  components: { Navbar }
+  components: { Navbar, ActionBar }
 };
 </script>
 

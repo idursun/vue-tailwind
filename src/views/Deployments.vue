@@ -15,9 +15,14 @@ import { KClient, DeploymentList } from "@/client/kclient";
 @Component
 export default class Deployments extends Vue {
   deployments: DeploymentList = { items: [] };
-  async mounted() {
+
+  async created() {
+    this.deployments = await this.fetchData();
+  }
+
+  async fetchData() {
     const client = new KClient();
-    this.deployments = await client.getDeployments();
+    return client.getDeployments();
   }
 }
 </script>
