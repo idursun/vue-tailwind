@@ -18,7 +18,9 @@
 <script lang="ts">
 import Vue from "vue";
 import { KClient, NamespaceList } from "../client/kclient";
-import { Component, Prop } from "vue-property-decorator";
+import Component from "vue-class-component";
+import { Prop } from "vue-property-decorator";
+Component.registerHooks(["beforeRouteUpdate"]);
 
 @Component
 export default class Namespaces extends Vue {
@@ -27,6 +29,15 @@ export default class Namespaces extends Vue {
 
   async created() {
     this.namespaces = await this.fetchData();
+    console.log(this.namespace);
+  }
+
+  async beforeRouteUpdate(to: any, from: any, next: any) {
+    console.log(to);
+    next();
+  }
+
+  async mounted() {
     console.log(this.namespace);
   }
 
