@@ -1,6 +1,6 @@
 <template>
-  <router-link class="p-2 hover:bg-blue-700 hover:text-white hover:shadow" :to="to">
-    <i :class="classObject"></i>
+  <router-link class="p-2 hover:bg-blue-800 hover:text-white hover:shadow-lg" :to="to">
+    <i class="pr-1 text-blue-300" :class="classObject"></i>
     <slot></slot>
   </router-link>
 </template>

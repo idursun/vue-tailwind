@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex items-center m-0 p-2 bg-blue-900 text-gray-100 font-semibold hover:text-gray-300 shadow-lg"
+    class="flex items-center m-0 p-2 bg-blue-900 text-gray-100 font-semibold hover:text-gray-300 border-0 shadow-lg"
   >
     <MyNavLink to="/namespaces" icon="check">Namespaces</MyNavLink>
     <MyNavLink to="/deployments" icon="server">Deployments</MyNavLink>

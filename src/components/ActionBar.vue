@@ -1,9 +1,9 @@
 <template>
-  <div class="flex bg-blue-800 w-full h-10 p-2">
+  <div class="flex m-0 bg-gray-200 p-2 border-0 border-b-2 h-12 items-center shadow-lg">
     <div class="px-2">
-      <span class="pr-2 text-white">Namespaces: ({{currentSelection}})</span>
+      <span class="pr-2">Namespaces: ({{currentSelection}})</span>
       <select class="border-0" v-model="currentSelection">
-        <option>default</option>
+        <option v-for="ns in ">default</option>
         <option>default2</option>
       </select>
     </div>
