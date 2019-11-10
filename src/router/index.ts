@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Deployments from "@/views/Deployments.vue";
 import Namespaces from "@/views/Namespaces.vue";
+import Services from "@/views/Services.vue";
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,11 @@ const routes = [
     path: "/deployments",
     name: "deployments",
     component: Deployments
+  },
+  {
+    path: "/services",
+    name: "services",
+    component: Services
   },
   {
     path: "/about",
