@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-shrink-0 w-1/6 h-screen bg-gray-100 shadow-lg">
+  <div class="sidebar flex-shrink-0 h-screen bg-gray-100 shadow-lg">
     <router-link
       class="m-2 p-2 flex items-center justify-between hover:bg-coldblue-200 hover:shadow-md rounded-sm text-blue-900"
       v-for="item in items"
@@ -35,3 +35,9 @@ export default Vue.extend({
   }
 });
 </script>
+
+<style scoped>
+.sidebar {
+    width: 200px;
+}
+</style>
