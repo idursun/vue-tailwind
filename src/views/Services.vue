@@ -23,7 +23,7 @@
             <div
               class="inline-block p-1 m-1 rounded bg-indigo-600 text-gray-100 text-xs font-semibold tracking-wider whitespace-no-wrap cursor-pointer"
               v-for="(value,label) in item.metadata.labels"
-              :key="label"
+              :key="label + value"
               @click="filterByLabel(label, value)"
             >
               <span class="text-xs text-gray-100 font-normal">{{label}}</span>:
@@ -35,11 +35,14 @@
         <div class="pl-2 items-center border-l-2 w-1/5">
           <span class="block pl-1 text-gray-700 font-semibold">Selectors</span>
           <div>
-            <span
+            <div
               class="inline-block p-1 m-1 rounded bg-indigo-600 text-gray-100 text-xs font-semibold tracking-wider whitespace-no-wrap"
-              v-for="selector in item.spec.selector"
-              :key="selector"
-            >{{selector}}</span>
+              v-for="(value, selector) in item.spec.selector"
+              :key="selector + value"
+            >
+              <span class="text-xs text-gray-100 font-normal">{{selector}}</span>:
+              <span class="text-xs text-gray-100 font-semibold">{{value}}</span>
+            </div>
           </div>
         </div>
 
