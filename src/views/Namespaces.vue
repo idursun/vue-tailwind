@@ -29,11 +29,9 @@ export default class Namespaces extends Vue {
 
   async created() {
     this.namespaces = await this.fetchData();
-    console.log(this.namespace);
   }
 
   async beforeRouteUpdate(to: any, from: any, next: any) {
-    console.log(to);
     next();
   }
 

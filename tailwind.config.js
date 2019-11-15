@@ -1,10 +1,5 @@
-const {
-  colors: { teal, orange, pink, purple, indigo, ...colors }
-} = require("tailwindcss/defaultTheme");
-
 module.exports = {
   theme: {
-    colors: colors,
     extend: {
       colors: {
         coldblue: {
