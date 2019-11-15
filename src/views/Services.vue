@@ -61,37 +61,37 @@
 <script lang="ts">
 import Vue from "vue";
 import { KClient, ServiceList } from "@/client/kclient";
+import router from "../router";
 
 interface Data {
   services: ServiceList;
-  filter: Record<string, string>;
 }
 
 export default Vue.extend({
   data(): Data {
     return {
-      services: { items: [] },
-      filter: {}
+      services: { items: [] }
     };
   },
-  async created() {
-    this.services = await this.fetchData();
+  beforeRouteEnter(to, from, next) {
+    next(vm => vm.fetchData(to.query as Record<string, string>));
   },
-  watch: {
-    async filter(value) {
-      const client = new KClient();
-      this.services = await client.getServices(value);
-    }
+  beforeRouteUpdate(to, from, next) {
+    this.fetchData(to.query as Record<string, string>);
+    next();
+  },
+  created() {
+    this.fetchData(this.$router.currentRoute.query as Record<string, string>);
   },
   methods: {
     async filterByLabel(label: string, value: string) {
       let filter: Record<string, string> = {};
       filter[label] = value;
-      this.filter = filter;
+      this.$router.push({ query: filter });
     },
-    async fetchData() {
+    async fetchData(filter: Record<string, string>) {
       const client = new KClient();
-      return client.getServices();
+      this.services = await client.getServices(filter);
     }
   }
 });
