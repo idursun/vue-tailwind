@@ -62,8 +62,18 @@ export class KClient {
     return (await response.json()) as DeploymentList;
   }
 
-  async getServices(): Promise<ServiceList> {
-    let response = await fetch("api/v1/services");
+  async getServices(filter?: Record<string, string>): Promise<ServiceList> {
+    let url = "api/v1/services";
+
+
+    if (filter != null) {
+      url = url + "?labelSelector="
+      for (const label in filter) {
+        url += `${label}=${encodeURIComponent(filter[label])}`
+      }
+    }
+
+    let response = await fetch(url);
     return (await response.json()) as ServiceList;
   }
 }

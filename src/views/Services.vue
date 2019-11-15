@@ -20,11 +20,15 @@
         <div class="pl-2 items-center border-l-2 w-1/5">
           <span class="block pl-1 text-gray-700 font-bold">Labels</span>
           <div>
-            <span
-              class="inline-block p-1 m-1 rounded bg-indigo-600 text-gray-100 text-xs font-semibold tracking-wider"
-              v-for="label in item.metadata.labels"
+            <div
+              class="inline-block p-1 m-1 rounded bg-indigo-600 text-gray-100 text-xs font-semibold tracking-wider whitespace-no-wrap cursor-pointer"
+              v-for="(value,label) in item.metadata.labels"
               :key="label"
-            >{{label}}</span>
+              @click="filterByLabel(label, value)"
+            >
+              <span class="text-xs text-gray-100 font-normal">{{label}}</span>:
+              <span class="text-xs text-gray-100 font-semibold">{{value}}</span>
+            </div>
           </div>
         </div>
 
@@ -60,18 +64,31 @@ import { KClient, ServiceList } from "@/client/kclient";
 
 interface Data {
   services: ServiceList;
+  filter: Record<string, string>;
 }
 
 export default Vue.extend({
   data(): Data {
     return {
-      services: { items: [] }
+      services: { items: [] },
+      filter: {}
     };
   },
   async created() {
     this.services = await this.fetchData();
   },
+  watch: {
+    async filter(value) {
+      const client = new KClient();
+      this.services = await client.getServices(value);
+    }
+  },
   methods: {
+    async filterByLabel(label: string, value: string) {
+      let filter: Record<string, string> = {};
+      filter[label] = value;
+      this.filter = filter;
+    },
     async fetchData() {
       const client = new KClient();
       return client.getServices();
