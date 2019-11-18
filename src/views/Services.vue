@@ -76,20 +76,18 @@ export default Vue.extend({
       services: { items: [] }
     };
   },
-  beforeRouteEnter(to, from, next) {
-    next(vm => vm.fetchData(to.query as Record<string, string>));
+  async created() {
+    this.fetchData(this.$router.currentRoute.query as Record<string, string>);
   },
   beforeRouteUpdate(to, from, next) {
     this.fetchData(to.query as Record<string, string>);
     next();
   },
-  created() {
-    this.fetchData(this.$router.currentRoute.query as Record<string, string>);
-  },
   methods: {
     async filterByLabel(label: string, value: string) {
       let filter: Record<string, string> = {};
       filter[label] = value;
+      console.log(filter)
       this.$router.push({ query: filter });
     },
     async fetchData(filter: Record<string, string>) {
