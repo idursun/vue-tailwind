@@ -1,4 +1,5 @@
-# tailwind-components
+# vue-tailwind-2
+
 
 ## Project setup
 ```
